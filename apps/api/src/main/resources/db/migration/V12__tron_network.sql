@@ -1,0 +1,1 @@
+ALTER TABLE platform_config ADD COLUMN tron_network VARCHAR(16) NOT NULL DEFAULT 'MAINNET';

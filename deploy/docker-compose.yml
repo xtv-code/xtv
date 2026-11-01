@@ -1,0 +1,40 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: xtv
+      MYSQL_USER: xtv
+      MYSQL_PASSWORD: xtv
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - xtv-mysql:/var/lib/mysql
+  api:
+    build: ../apps/api
+    depends_on:
+      - mysql
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/xtv?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8
+      SPRING_DATASOURCE_USERNAME: xtv
+      SPRING_DATASOURCE_PASSWORD: xtv
+      XTV_STORAGE_ROOT: /data/media
+      XTV_PAYMENT_SIMULATE: "false"
+      # Required in prod (see deploy/DEPLOYMENT.md). Replace before go-live:
+      XTV_JWT_SECRET: ${XTV_JWT_SECRET:?set XTV_JWT_SECRET}
+      XTV_ADMIN_USERNAME: ${XTV_ADMIN_USERNAME:-admin}
+      XTV_ADMIN_PASSWORD: ${XTV_ADMIN_PASSWORD:?set XTV_ADMIN_PASSWORD}
+      XTV_CORS_ORIGINS: ${XTV_CORS_ORIGINS:-http://127.0.0.1:8088}
+    volumes:
+      - ../data/media:/data/media
+    ports:
+      - "8080:8080"
+  web:
+    build: ../apps/web
+    ports:
+      - "8088:80"
+
+volumes:
+  xtv-mysql:

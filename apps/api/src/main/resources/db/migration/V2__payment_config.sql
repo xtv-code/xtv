@@ -1,0 +1,4 @@
+ALTER TABLE platform_config ADD COLUMN usdt_address VARCHAR(64) NOT NULL DEFAULT '';
+ALTER TABLE platform_config ADD COLUMN payment_simulate BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE platform_config ADD COLUMN tron_api_key VARCHAR(200) NOT NULL DEFAULT '';
+ALTER TABLE platform_config ADD COLUMN payment_seeded BOOLEAN NOT NULL DEFAULT FALSE;

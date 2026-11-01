@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/xtv?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8
+    username: xtv
+    password: xtv
+xtv:
+  storage-root: ${user.dir}/../../data/media
+  payment-simulate: true

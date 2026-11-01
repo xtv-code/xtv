@@ -1,0 +1,1 @@
+ALTER TABLE exchange_merchant ADD COLUMN address VARCHAR(128) NOT NULL DEFAULT '';

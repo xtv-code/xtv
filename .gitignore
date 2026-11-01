@@ -1,0 +1,16 @@
+target/
+.idea/
+*.iml
+.DS_Store
+.env
+.env.*
+!.env.example
+data/*.mv.db
+data/*.trace.db
+data/*.lock.db
+data/backups/
+data/media/**
+!data/media/public/.gitkeep
+data/testnet-wallets.json
+apps/web/node_modules/
+apps/web/dist/

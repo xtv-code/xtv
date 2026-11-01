@@ -1,0 +1,1 @@
+ALTER TABLE pay_order ADD COLUMN payer_address VARCHAR(64) NOT NULL DEFAULT '';

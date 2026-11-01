@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://mysql:3306/xtv?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8}
+    username: ${SPRING_DATASOURCE_USERNAME:xtv}
+    password: ${SPRING_DATASOURCE_PASSWORD:xtv}
+xtv:
+  storage-root: ${XTV_STORAGE_ROOT:/data/media}
+  payment-simulate: false
+  auto-register: false
+  jwt-secret: ${XTV_JWT_SECRET}
+  cors-origins: ${XTV_CORS_ORIGINS}
+  admin:
+    username: ${XTV_ADMIN_USERNAME:admin}
+    password: ${XTV_ADMIN_PASSWORD}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true

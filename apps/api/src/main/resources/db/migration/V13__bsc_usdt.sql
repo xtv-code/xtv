@@ -1,0 +1,2 @@
+ALTER TABLE platform_config ADD COLUMN bsc_address VARCHAR(64) NOT NULL DEFAULT '';
+ALTER TABLE platform_config ADD COLUMN bsc_network VARCHAR(16) NOT NULL DEFAULT 'MAINNET';
